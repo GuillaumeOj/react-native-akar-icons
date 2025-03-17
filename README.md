@@ -2,7 +2,8 @@
 
 This is a library compatible with React Native of the Akar Icons library. Please explore all the icons at [akaricons.com](https://akaricons.com).
 
-**This author of this package, is not the author of the Ankar Icons library. For any request of new icons, please visit Ankar Icons original [repository](https://github.com/artcoholic/akar-icons-app/issues).
+**The author of this package, is not the author of the Ankar Icons library.**
+**For any request of new icons, please visit Ankar Icons original [repository](https://github.com/artcoholic/akar-icons-app/issues).**
 
 ## Get Started
 
