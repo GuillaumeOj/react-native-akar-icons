@@ -6,7 +6,7 @@ import type { IconProps } from "../types/icons/helpers-icon";
 const IconComponent = (props: IconProps) => {
   const { color = "black", size = 24, ...otherProps } = props;
   return (
-    <Svg width={size} height={size} fill={color} {...otherProps}>
+    <Svg width={size} height={size} fill="none" {...otherProps}>
       <Path
         stroke={color}
         d="M14 7c0 2.21 1.644 4 4 4s4-1.79 4-4-1.644-4-4-4-4 1.79-4 4ZM10 7c0 2.21-1.644 4-4 4S2 9.21 2 7s1.644-4 4-4 4 1.79 4 4Z"
