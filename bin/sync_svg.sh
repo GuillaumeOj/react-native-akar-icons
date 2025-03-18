@@ -10,7 +10,7 @@ SOURCE_REPO="https://github.com/artcoholic/akar-icons-app.git"
 SOURCE_BRANCH="main"
 SOURCE_DIR="src/svg" # Directory to extract from source repo
 # Target
-TARGET_DIR="src/svg" # Where to place files the repo
+TARGET_DIR="assets/svg" # Where to place files the repo
 TARGET_REPO="https://github.com/Tasta-app/react-native-akar-icons.git"
 TARGET_BRANCH="akar-icons-sync-$(date '+%Y-%m-%d-%H-%M-%S')"
 
