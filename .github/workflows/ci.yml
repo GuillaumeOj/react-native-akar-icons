@@ -21,7 +21,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Lint files
-        run: bun lint
+        run: bun lint:ci
 
       - name: Check format
         run: bun format:ci
