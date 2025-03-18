@@ -20,7 +20,7 @@ npm install --save react-native-akar-icons
 Import the icons you need into your ReactNative project and declare them in your render method:
 
 ```jsx
-import { ArrowRight, Star, LinkOut } from "react-native-akar-icons";
+import { ArrowRight, LinkOut, Star } from "react-native-akar-icons";
 
 const MyComponent = () => {
   return (
