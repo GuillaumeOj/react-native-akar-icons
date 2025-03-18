@@ -9,6 +9,7 @@
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
+  "types": "./lib/typescript/commonjs/src/index.d.ts",
   "exports": {
     ".": {
       "import": {
@@ -41,6 +42,8 @@
     "typecheck": "tsc",
     "lint:local": "eslint --config eslint.config.cjs --fix \"**/*.{js,ts,tsx, cjs}\"",
     "lint:ci": "eslint \"**/*.{js,ts,tsx, cjs}\"",
+    "icons:sync": "bin/sync_svg.sh",
+    "icons:build": "node bin/build.cjs",
     "format:local": "prettier --config package.json --ignore-path .prettierignore --write .",
     "format:ci": "prettier --config package.json --ignore-path .prettierignore --check .",
     "clean": "del-cli lib",
@@ -77,6 +80,8 @@
     "@types/eslint-config-prettier": "^6.11.3",
     "@types/jest": "^29.5.14",
     "@types/react": "^18.3.18",
+    "change-case": "^5.4.4",
+    "cheerio": "^1.0.0",
     "commitlint": "^17.8.1",
     "del-cli": "^5.1.0",
     "eslint": "^8.57.1",
@@ -84,12 +89,14 @@
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react-native": "^5.0.0",
     "eslint-plugin-unused-imports": "^4.1.4",
+    "glob": "^11.0.1",
     "jest": "^29.7.0",
     "prettier": "^3.5.3",
     "prettier-plugin-organize-imports": "^4.1.0",
     "react": "18.3.1",
     "react-native": "0.76.7",
     "react-native-builder-bob": "^0.37.0",
+    "react-native-svg": "^15.11.2",
     "release-it": "^17.11.0",
     "typescript": "^5.8.2"
   },
@@ -98,14 +105,8 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
-  },
-  "jest": {
-    "preset": "react-native",
-    "modulePathIgnorePatterns": [
-      "<rootDir>/example/node_modules",
-      "<rootDir>/lib/"
-    ]
+    "react-native": "*",
+    "react-native-svg": "*"
   },
   "commitlint": {
     "extends": [
