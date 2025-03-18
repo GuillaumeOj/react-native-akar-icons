@@ -212,7 +212,7 @@ export { Headphone } from "./icons/Headphone";
 export { Health } from "./icons/Health";
 export { Heart } from "./icons/Heart";
 export { Height } from "./icons/Height";
-export { IconProps } from "./icons/helpers-icon.d.ts";
+export { IconProps } from "./icons/helpers-icon";
 export { Heptagon } from "./icons/Heptagon";
 export { HeptagonFill } from "./icons/HeptagonFill";
 export { Hexagon } from "./icons/Hexagon";

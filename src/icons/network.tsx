@@ -6,7 +6,7 @@ import type { IconProps } from "../types/icons/helpers-icon";
 const IconComponent = (props: IconProps) => {
   const { color = "black", size = 24, ...otherProps } = props;
   return (
-    <Svg width={size} height={size} fill={color} {...otherProps}>
+    <Svg width={size} height={size} fill="none" {...otherProps}>
       <_Circle cx="18" cy="5" r="3" stroke={color} strokeWidth="2" />
       <_Circle cx="18" cy="19" r="3" stroke={color} strokeWidth="2" />
       <_Circle cx="6" cy="12" r="3" stroke={color} strokeWidth="2" />
