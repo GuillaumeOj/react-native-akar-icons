@@ -8,9 +8,10 @@ const prettier = require("prettier");
 
 const ROOT_DIR = path.join(__dirname, "..");
 const SRC_DIR = path.join(ROOT_DIR, "src");
+const ASSETS_DIR = path.join(ROOT_DIR, "assets");
 const TYPES_DIR = path.join(SRC_DIR, "types");
 const TYPES_ICONS_DIR = path.join(TYPES_DIR, "icons");
-const SRC_SVG_DIR = path.join(SRC_DIR, "svg");
+const ASSETS_SVG_DIR = path.join(ASSETS_DIR, "svg");
 const SRC_ICONS_DIR = path.join(SRC_DIR, "icons");
 
 fs.mkdir(TYPES_DIR, () => {});
@@ -50,7 +51,7 @@ export declare const ${componentName}: NamedExoticComponent<IconProps>;`;
   fs.writeFileSync(iconTypePath, formatted, { encoding: "utf-8" });
 };
 const buildIcons = async () => {
-  const icons = globSync(`${SRC_SVG_DIR}/**.svg`);
+  const icons = globSync(`${ASSETS_SVG_DIR}/**.svg`);
 
   console.info("Processing icons...");
   icons.forEach(async (icon) => {
@@ -144,7 +145,7 @@ const IconComponent = (props: IconProps) => {
       .toString()
       .replace(/ class=\"[^\"]+\"/g, "")
       .replace(/ version=\"[^\"]+\"/g, "")
-      .replace(new RegExp('fill="[^"]+"', "g"), "fill={color}")
+      .replace(new RegExp('fill="(?!none)[^"]+"', "g"), "fill={color}")
       .replace(new RegExp('stroke="currentColor"', "g"), "stroke={color}")
       .replace('width="24"', "width={size}")
       .replace('height="24"', "height={size}")
@@ -192,7 +193,7 @@ IconComponent.displayName = "${componentName}";
 
 export const ${componentName}: NamedExoticComponent<IconProps> = memo<IconProps>(IconComponent);`;
 
-    const exportLine = `export { ${componentName} } from "./icons/${id}.ts";`;
+    const exportLine = `export { ${componentName} } from "./icons/${id}";`;
     iconExports.push(exportLine);
     const exportTypeLine = `export { ${componentName} } from "./icons/${componentName}";`;
     iconTypeExports.push(exportTypeLine);
@@ -227,9 +228,7 @@ const exportComponents = async () => {
 
 const exportComponentTypes = async () => {
   console.info("Export components types...");
-  iconTypeExports.push(
-    `export { IconProps } from "./icons/helpers-icon.d.ts";`
-  );
+  iconTypeExports.push(`export { IconProps } from "./icons/helpers-icon";`);
   const indexTypePath = path.join(TYPES_DIR, "index.d.ts");
   const indexPrettierConfig = await prettier.resolveConfig(indexTypePath);
   const formattedTypeExports = await prettier.format(

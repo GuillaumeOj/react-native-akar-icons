@@ -23,13 +23,14 @@
     }
   },
   "files": [
-    "src",
     "lib",
     "android",
     "ios",
     "cpp",
     "*.podspec",
     "react-native.config.js",
+    "!src",
+    "!**/svg/**",
     "!ios/build",
     "!android/build",
     "!android/gradle",
@@ -98,6 +99,7 @@
     "react-native-builder-bob": "^0.37.0",
     "react-native-svg": "^15.11.2",
     "release-it": "^17.11.0",
+    "svgo": "^3.3.2",
     "typescript": "^5.8.2"
   },
   "resolutions": {
