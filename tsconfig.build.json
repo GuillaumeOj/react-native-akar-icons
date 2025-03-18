@@ -1,4 +1,15 @@
 {
   "extends": "./tsconfig",
-  "exclude": ["node_modules", "lib"]
+  "compilerOptions": {
+    "outDir": "lib/typescript",
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": false
+  },
+  "exclude": ["node_modules", "lib"],
+  "include": ["src"]
 }
