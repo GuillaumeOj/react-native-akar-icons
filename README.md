@@ -1,4 +1,4 @@
-# akar-icons-react-native
+# react-native-akar-icons
 
 This is a library compatible with React Native of the Akar Icons library. Please explore all the icons at [akaricons.com](https://akaricons.com).
 
