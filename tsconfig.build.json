@@ -2,15 +2,13 @@
   "extends": "./tsconfig",
   "compilerOptions": {
     "outDir": "lib/typescript",
-    "outFile": "lib/typescript/index.d.ts",
     "declaration": true,
     "declarationMap": true,
     "emitDeclarationOnly": true,
     "noEmit": false,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
-    "allowImportingTsExtensions": false,
-    "verbatimModuleSyntax": false
+    "allowImportingTsExtensions": false
   },
   "exclude": ["node_modules", "lib"],
   "include": ["src"]

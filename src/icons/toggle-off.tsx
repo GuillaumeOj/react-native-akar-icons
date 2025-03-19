@@ -1,5 +1,5 @@
 import type { NamedExoticComponent } from "react";
-import { memo } from "react";
+import React, { memo } from "react";
 import { Circle as _Circle, Rect, Svg } from "react-native-svg";
 import type { IconProps } from "../types/icons/helpers-icon";
 
