@@ -14,9 +14,9 @@ const TYPES_ICONS_DIR = path.join(TYPES_DIR, "icons");
 const ASSETS_SVG_DIR = path.join(ASSETS_DIR, "svg");
 const SRC_ICONS_DIR = path.join(SRC_DIR, "icons");
 
-fs.mkdir(TYPES_DIR, () => {});
-fs.mkdir(TYPES_ICONS_DIR, () => {});
-fs.mkdir(SRC_ICONS_DIR, () => {});
+fs.mkdirSync(TYPES_DIR, () => {});
+fs.mkdirSync(TYPES_ICONS_DIR, () => {});
+fs.mkdirSync(SRC_ICONS_DIR, () => {});
 
 const iconExports = [];
 const iconTypeExports = [];
