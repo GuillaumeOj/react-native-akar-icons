@@ -48,7 +48,7 @@
     "format:local": "prettier --config package.json --ignore-path .prettierignore --write .",
     "format:ci": "prettier --config package.json --ignore-path .prettierignore --check .",
     "clean": "del-cli lib",
-    "prepare": "bunx tsc --project tsconfig.build.json && bun run bin/build-package.cjs",
+    "prepare": "tsc --project tsconfig.build.json && bun run bin/build-package.cjs",
     "release": "release-it"
   },
   "keywords": [
