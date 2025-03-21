@@ -1,24 +1,25 @@
-import type { NamedExoticComponent } from "react";
-import React, { memo } from "react";
+import { memo } from "react";
+import type { NamedExoticComponent, PropsWithRef } from "react";
 import { Path, Svg } from "react-native-svg";
-import type { IconProps } from "../types/icons/helpers-icon";
+import type { IconProps } from "./IconProps";
 
-const IconComponent = (props: IconProps) => {
-  const { color = "black", size = 24, ...otherProps } = props;
-  return (
-    <Svg width={size} height={size} fill="none" {...otherProps}>
-      <Path
-        stroke={color}
-        d="M2 14.959V9.04C2 8.466 2.448 8 3 8h3.586a.98.98 0 0 0 .707-.305l3-3.388c.63-.656 1.707-.191 1.707.736v13.914c0 .934-1.09 1.395-1.716.726l-2.99-3.369A.98.98 0 0 0 6.578 16H3c-.552 0-1-.466-1-1.041M16 8.5c1.333 1.778 1.333 5.222 0 7M19 5c3.988 3.808 4.012 10.217 0 14"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-      />
-    </Svg>
-  );
+const IconComponent = (props: PropsWithRef<IconProps>) => {
+	const { color = "black", size = 24, ...otherProps } = props;
+
+	return (
+		<Svg width={size} height={size} fill="none" {...otherProps}>
+			<Path
+				stroke={color}
+				d="M2 14.959V9.04C2 8.466 2.448 8 3 8h3.586a.98.98 0 0 0 .707-.305l3-3.388c.63-.656 1.707-.191 1.707.736v13.914c0 .934-1.09 1.395-1.716.726l-2.99-3.369A.98.98 0 0 0 6.578 16H3c-.552 0-1-.466-1-1.041M16 8.5c1.333 1.778 1.333 5.222 0 7M19 5c3.988 3.808 4.012 10.217 0 14"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				strokeWidth="2"
+			/>
+		</Svg>
+	);
 };
 
 IconComponent.displayName = "SoundOn";
 
 export const SoundOn: NamedExoticComponent<IconProps> =
-  memo<IconProps>(IconComponent);
+	memo<IconProps>(IconComponent);
