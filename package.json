@@ -41,24 +41,15 @@
   ],
   "scripts": {
     "typecheck": "tsc",
-    "lint:local": "eslint --config eslint.config.cjs --fix \"**/*.{js,ts,tsx, cjs}\"",
-    "lint:ci": "eslint \"**/*.{js,ts,tsx, cjs}\"",
     "icons:sync": "bin/sync_svg.sh",
     "icons:build": "node bin/build.cjs",
-    "format:local": "prettier --config package.json --ignore-path .prettierignore --write .",
-    "format:ci": "prettier --config package.json --ignore-path .prettierignore --check .",
+    "format:local": "bunx biome check --write",
+    "format:ci": "bunx biome check",
     "clean": "del-cli lib",
-    "prepare": "bunx tsc --project tsconfig.build.json && bun run bin/build-package.cjs",
+    "prepare": "bun clean && bunx tsc --project tsconfig.build.json && bun run bin/build-package.cjs && bun format:local",
     "release": "release-it"
   },
-  "keywords": [
-    "svg",
-    "akar",
-    "icons",
-    "react-native",
-    "ios",
-    "android"
-  ],
+  "keywords": ["svg", "akar", "icons", "react-native", "ios", "android"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Tasta-app/react-native-akar-icons.git"
@@ -73,9 +64,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^17.8.1",
-    "@eslint/compat": "^1.2.7",
-    "@evilmartians/lefthook": "^1.11.3",
+    "@biomejs/biome": "^1.9.4",
     "@react-native/eslint-config": "^0.73.2",
     "@release-it/conventional-changelog": "^9.0.4",
     "@types/bun": "^1.2.5",
@@ -85,16 +74,8 @@
     "bun": "^1.2.5",
     "change-case": "^5.4.4",
     "cheerio": "^1.0.0",
-    "commitlint": "^17.8.1",
     "del-cli": "^5.1.0",
-    "eslint": "^8.57.1",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.3",
-    "eslint-plugin-react-native": "^5.0.0",
-    "eslint-plugin-unused-imports": "^4.1.4",
     "glob": "^11.0.1",
-    "prettier": "^3.5.3",
-    "prettier-plugin-organize-imports": "^4.1.0",
     "react": "18.3.1",
     "react-native": "0.76.7",
     "react-native-svg": "^15.11.2",
@@ -109,11 +90,6 @@
     "react": "*",
     "react-native": "*",
     "react-native-svg": "*"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
   },
   "release-it": {
     "git": {
@@ -131,17 +107,6 @@
         "preset": "angular"
       }
     }
-  },
-  "prettier": {
-    "quoteProps": "consistent",
-    "singleQuote": false,
-    "tabWidth": 2,
-    "trailingComma": "es5",
-    "useTabs": false,
-    "plugins": [
-      "prettier-plugin-organize-imports"
-    ],
-    "organizeImportsSkipDestructiveCodeActions": true
   },
   "create-react-native-library": {
     "languages": "js",
