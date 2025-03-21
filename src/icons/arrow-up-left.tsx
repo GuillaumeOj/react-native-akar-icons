@@ -4,22 +4,22 @@ import { Path, Svg } from "react-native-svg";
 import type { IconProps } from "./IconProps";
 
 const IconComponent = (props: PropsWithRef<IconProps>) => {
-	const { color = "black", size = 24, ...otherProps } = props;
+  const { color = "black", size = 24, ...otherProps } = props;
 
-	return (
-		<Svg width={size} height={size} fill="none" {...otherProps}>
-			<Path
-				stroke={color}
-				d="m6 6 12 12M16 6H6v10"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-				strokeWidth="2"
-			/>
-		</Svg>
-	);
+  return (
+    <Svg width={size} height={size} fill="none" {...otherProps}>
+      <Path
+        stroke={color}
+        d="m6 6 12 12M16 6H6v10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+    </Svg>
+  );
 };
 
 IconComponent.displayName = "ArrowUpLeft";
 
 export const ArrowUpLeft: NamedExoticComponent<IconProps> =
-	memo<IconProps>(IconComponent);
+  memo<IconProps>(IconComponent);

@@ -4,35 +4,35 @@ import { Rect, Svg, Circle as _Circle } from "react-native-svg";
 import type { IconProps } from "./IconProps";
 
 const IconComponent = (props: PropsWithRef<IconProps>) => {
-	const { color = "black", size = 24, ...otherProps } = props;
+  const { color = "black", size = 24, ...otherProps } = props;
 
-	return (
-		<Svg width={size} height={size} fill="none" {...otherProps}>
-			<Rect
-				width="20"
-				height="10"
-				x="2"
-				y="7"
-				stroke={color}
-				rx="5"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-				strokeWidth="2"
-			/>
-			<_Circle
-				cx="7"
-				cy="12"
-				r="5"
-				stroke={color}
-				strokeLinecap="round"
-				strokeLinejoin="round"
-				strokeWidth="2"
-			/>
-		</Svg>
-	);
+  return (
+    <Svg width={size} height={size} fill="none" {...otherProps}>
+      <Rect
+        width="20"
+        height="10"
+        x="2"
+        y="7"
+        stroke={color}
+        rx="5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+      <_Circle
+        cx="7"
+        cy="12"
+        r="5"
+        stroke={color}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+    </Svg>
+  );
 };
 
 IconComponent.displayName = "ToggleOff";
 
 export const ToggleOff: NamedExoticComponent<IconProps> =
-	memo<IconProps>(IconComponent);
+  memo<IconProps>(IconComponent);
