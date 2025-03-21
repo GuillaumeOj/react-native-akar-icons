@@ -65,8 +65,6 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
-		"@commitlint/config-conventional": "^17.8.1",
-		"@evilmartians/lefthook": "^1.11.3",
 		"@react-native/eslint-config": "^0.73.2",
 		"@release-it/conventional-changelog": "^9.0.4",
 		"@types/bun": "^1.2.5",
@@ -76,7 +74,6 @@
 		"bun": "^1.2.5",
 		"change-case": "^5.4.4",
 		"cheerio": "^1.0.0",
-		"commitlint": "^17.8.1",
 		"del-cli": "^5.1.0",
 		"glob": "^11.0.1",
 		"react": "18.3.1",
@@ -93,9 +90,6 @@
 		"react": "*",
 		"react-native": "*",
 		"react-native-svg": "*"
-	},
-	"commitlint": {
-		"extends": ["@commitlint/config-conventional"]
 	},
 	"release-it": {
 		"git": {
