@@ -4,17 +4,23 @@ import { Svg, Circle as _Circle } from "react-native-svg";
 import type { IconProps } from "./IconProps";
 
 const IconComponent = (props: PropsWithRef<IconProps>) => {
-  const { color = "black", size = 24, ...otherProps } = props;
+  const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
 
   return (
-    <Svg width={size} height={size} fill="none" {...otherProps}>
+    <Svg
+      width={size}
+      height={size}
+      fill="none"
+      viewBox="0 0 24 24"
+      {...otherProps}
+    >
       <_Circle
         cx="4"
         cy="4"
         r="1"
         stroke={color}
         transform="rotate(90 4 4)"
-        strokeWidth="2"
+        strokeWidth={strokeWidth}
       />
       <_Circle
         cx="12"
@@ -22,7 +28,7 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
         r="1"
         stroke={color}
         transform="rotate(90 12 4)"
-        strokeWidth="2"
+        strokeWidth={strokeWidth}
       />
       <_Circle
         cx="20"
@@ -30,7 +36,7 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
         r="1"
         stroke={color}
         transform="rotate(90 20 4)"
-        strokeWidth="2"
+        strokeWidth={strokeWidth}
       />
       <_Circle
         cx="4"
@@ -38,7 +44,7 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
         r="1"
         stroke={color}
         transform="rotate(90 4 12)"
-        strokeWidth="2"
+        strokeWidth={strokeWidth}
       />
       <_Circle
         cx="12"
@@ -46,7 +52,7 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
         r="1"
         stroke={color}
         transform="rotate(90 12 12)"
-        strokeWidth="2"
+        strokeWidth={strokeWidth}
       />
       <_Circle
         cx="20"
@@ -54,7 +60,7 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
         r="1"
         stroke={color}
         transform="rotate(90 20 12)"
-        strokeWidth="2"
+        strokeWidth={strokeWidth}
       />
       <_Circle
         cx="4"
@@ -62,7 +68,7 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
         r="1"
         stroke={color}
         transform="rotate(90 4 20)"
-        strokeWidth="2"
+        strokeWidth={strokeWidth}
       />
       <_Circle
         cx="12"
@@ -70,7 +76,7 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
         r="1"
         stroke={color}
         transform="rotate(90 12 20)"
-        strokeWidth="2"
+        strokeWidth={strokeWidth}
       />
       <_Circle
         cx="20"
@@ -78,7 +84,7 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
         r="1"
         stroke={color}
         transform="rotate(90 20 20)"
-        strokeWidth="2"
+        strokeWidth={strokeWidth}
       />
     </Svg>
   );

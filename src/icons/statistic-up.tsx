@@ -4,17 +4,23 @@ import { Path, Svg } from "react-native-svg";
 import type { IconProps } from "./IconProps";
 
 const IconComponent = (props: PropsWithRef<IconProps>) => {
-  const { color = "black", size = 24, ...otherProps } = props;
+  const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
 
   return (
-    <Svg width={size} height={size} fill="none" {...otherProps}>
+    <Svg
+      width={size}
+      height={size}
+      fill="none"
+      viewBox="0 0 24 24"
+      {...otherProps}
+    >
       <Path
         stroke={color}
         d="M3 3v16a2 2 0 0 0 2 2h16"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeMiterlimit="5.759"
-        strokeWidth="2"
+        strokeWidth={strokeWidth}
       />
       <Path
         stroke={color}
@@ -22,14 +28,14 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeMiterlimit="5.759"
-        strokeWidth="2"
+        strokeWidth={strokeWidth}
       />
       <Path
         stroke={color}
         d="M18 8h3v3"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="2"
+        strokeWidth={strokeWidth}
       />
     </Svg>
   );

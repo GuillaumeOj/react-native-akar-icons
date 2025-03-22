@@ -4,10 +4,16 @@ import { ClipPath, Defs, G, Path, Svg } from "react-native-svg";
 import type { IconProps } from "./IconProps";
 
 const IconComponent = (props: PropsWithRef<IconProps>) => {
-  const { color = "black", size = 24, ...otherProps } = props;
+  const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
 
   return (
-    <Svg width={size} height={size} fill="none" {...otherProps}>
+    <Svg
+      width={size}
+      height={size}
+      fill="none"
+      viewBox="0 0 24 24"
+      {...otherProps}
+    >
       <G fill={color} clipPath="url(#a)">
         <Path d="M11.385 15.275c1.111-.004 3.54-.013 3.512-1.558-.027-1.58-2.36-1.485-3.497-1.438q-.192.009-.332.011l.052 2.987q.114-.003.265-.002M11.267 10.922c.927-.001 2.95-.003 2.926-1.408-.026-1.437-1.969-1.352-2.918-1.31q-.16.008-.278.01l.047 2.709z" />
         <Path

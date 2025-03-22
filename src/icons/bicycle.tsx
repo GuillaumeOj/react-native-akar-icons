@@ -4,10 +4,16 @@ import { Path, Svg, Circle as _Circle } from "react-native-svg";
 import type { IconProps } from "./IconProps";
 
 const IconComponent = (props: PropsWithRef<IconProps>) => {
-  const { color = "black", size = 24, ...otherProps } = props;
+  const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
 
   return (
-    <Svg width={size} height={size} fill="none" {...otherProps}>
+    <Svg
+      width={size}
+      height={size}
+      fill="none"
+      viewBox="0 0 24 24"
+      {...otherProps}
+    >
       <_Circle
         cx="6"
         cy="15"
@@ -15,7 +21,7 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
         stroke={color}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="2"
+        strokeWidth={strokeWidth}
       />
       <_Circle
         cx="18"
@@ -24,14 +30,14 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
         stroke={color}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="2"
+        strokeWidth={strokeWidth}
       />
       <Path
         stroke={color}
         d="m6 15 2-7h7.5M6 5h3M18 15 15 5h4M19 5h.5A1.5 1.5 0 0 1 21 6.5v0A1.5 1.5 0 0 1 19.5 8H19"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="2"
+        strokeWidth={strokeWidth}
       />
     </Svg>
   );

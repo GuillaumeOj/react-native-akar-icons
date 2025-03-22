@@ -30,7 +30,8 @@ const buildIconsPropsType = async () => {
   const iconHelperTypePath = path.join(SRC_ICONS_DIR, "IconProps.ts");
   const output = `export interface IconProps {
   color?: string;
-  size?: number | string;
+  size?: number;
+  strokeWidth?: number;
 }`;
   fs.writeFileSync(iconHelperTypePath, output, { encoding: "utf-8" });
 };
@@ -51,7 +52,12 @@ const buildIcons = async () => {
     console.info(">> Optimize...");
     const optimizedSvg = optimize(svg, {
       path: icon,
-      plugins: ["preset-default"],
+      plugins: [
+        {
+          name: "preset-default",
+          params: { overrides: { removeViewBox: false } },
+        },
+      ],
     });
 
     // Transform to React Native component
@@ -102,48 +108,49 @@ const buildIcons = async () => {
     const componentName = changeCase.pascalCase(id);
     const svgString = $("svg")
       .toString()
-      .replace(/ class=\"[^\"]+\"/g, "")
-      .replace(/ version=\"[^\"]+\"/g, "")
+      .replace(/ class="[^"]+"/g, "")
+      .replace(/ version="[^"]+"/g, "")
       .replace(/fill="(?!none)[^"]+"/g, "fill={color}")
+      .replace(/strokeWidth="(?!none)[^"]+"/g, "strokeWidth={strokeWidth}")
       .replace(/stroke="currentColor"/g, "stroke={color}")
-      .replace('xmlns=""', "")
-      .replace('width="24"', "width={size}")
-      .replace('height="24"', "height={size}")
-      .replace('otherProps="..."', "{...otherProps}")
-      .replace("<svg", "<Svg")
-      .replace("</svg", "</Svg")
+      .replace(/xmlns=""/g, "")
+      .replace(/width="24"/g, "width={size}")
+      .replace(/height="24"/g, "height={size}")
+      .replace(/otherProps="..."/g, "{...otherProps}")
+      .replace(/<svg/g, "<Svg")
+      .replace(/<\/svg>/g, "</Svg>")
       .replace(/<circle/g, "<_Circle")
-      .replace(/<\/circle/g, "</_Circle")
+      .replace(/<\/circle>/g, "</_Circle>")
       .replace(/<clipPath/g, "<ClipPath")
-      .replace(/<\/clipPath/g, "</ClipPath")
+      .replace(/<\/clipPath>/g, "</ClipPath>")
       .replace(/<ellipse/g, "<Ellipse")
-      .replace(/<\/ellipse/g, "</Ellipse")
+      .replace(/<\/ellipse>/g, "</Ellipse>")
       .replace(/<g/g, "<G")
-      .replace(/<\/g/g, "</G")
-      .replace(/<linear-gradient/g, "<LinearGradient")
-      .replace(/<\/linear-gradient/g, "</LinearGradient")
-      .replace(/<radial-gradient/g, "<RadialGradient")
-      .replace(/<\/radial-gradient/g, "</RadialGradient")
+      .replace(/<\/g>/g, "</G>")
+      .replace(/<linearGradient/g, "<LinearGradient")
+      .replace(/<\/linearGradient>/g, "</LinearGradient>")
+      .replace(/<radialGradient/g, "<RadialGradient")
+      .replace(/<\/radialGradient>/g, "</RadialGradient>")
       .replace(/<path/g, "<Path")
-      .replace(/<\/path/g, "</Path")
+      .replace(/<\/path>/g, "</Path>")
       .replace(/<line/g, "<Line")
-      .replace(/<\/line/g, "</Line")
+      .replace(/<\/line>/g, "</Line>")
       .replace(/<polygon/g, "<Polygon")
-      .replace(/<\/polygon/g, "</Polygon")
+      .replace(/<\/polygon>/g, "</Polygon>")
       .replace(/<polyline/g, "<Polyline")
-      .replace(/<\/polyline/g, "</Polyline")
+      .replace(/<\/polyline>/g, "</Polyline>")
       .replace(/<rect/g, "<Rect")
-      .replace(/<\/rect/g, "</Rect")
+      .replace(/<\/rect>/g, "</Rect>")
       .replace(/<symbol/g, "<_Symbol")
-      .replace(/<\/symbol/g, "</_Symbol")
+      .replace(/<\/symbol>/g, "</_Symbol>")
       .replace(/<text/g, "<_Text")
-      .replace(/<\/text/g, "</_Text")
+      .replace(/<\/text>/g, "</_Text>")
       .replace(/<use/g, "<Use")
-      .replace(/<\/use/g, "</Use")
+      .replace(/<\/use>/g, "</Use>")
       .replace(/<defs/g, "<Defs")
-      .replace(/<\/defs/g, "</Defs")
+      .replace(/<\/defs>/g, "</Defs>")
       .replace(/<stop/g, "<_Stop")
-      .replace(/<\/stop/g, "</_Stop")
+      .replace(/<\/stop>/g, "</_Stop>")
       .replace(/px/g, "");
 
     const output = `import React, { memo } from "react";
@@ -170,7 +177,7 @@ import {
 import type { IconProps } from "./IconProps"
 
 const IconComponent = (props: PropsWithRef<IconProps>) => {
-  const { color = "black", size = 24, ...otherProps } = props;
+  const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
 
   return (${svgString});
 };
