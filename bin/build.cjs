@@ -30,7 +30,8 @@ const buildIconsPropsType = async () => {
   const iconHelperTypePath = path.join(SRC_ICONS_DIR, "IconProps.ts");
   const output = `export interface IconProps {
   color?: string;
-  size?: number | string;
+  size?: number;
+  strokeWidth?: number;
 }`;
   fs.writeFileSync(iconHelperTypePath, output, { encoding: "utf-8" });
 };
@@ -176,7 +177,7 @@ import {
 import type { IconProps } from "./IconProps"
 
 const IconComponent = (props: PropsWithRef<IconProps>) => {
-  const { color = "black", size = 24, ...otherProps } = props;
+  const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
 
   return (${svgString});
 };
