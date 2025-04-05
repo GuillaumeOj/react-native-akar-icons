@@ -22,23 +22,7 @@
       }
     }
   },
-  "files": [
-    "lib",
-    "android",
-    "ios",
-    "cpp",
-    "*.podspec",
-    "react-native.config.js",
-    "!src",
-    "!**/svg/**",
-    "!ios/build",
-    "!android/build",
-    "!android/gradle",
-    "!android/gradlew",
-    "!android/gradlew.bat",
-    "!android/local.properties",
-    "!**/.*"
-  ],
+  "files": ["dist", "!src", "!**/svg/**", "!**/.*"],
   "scripts": {
     "typecheck": "tsc",
     "icons:sync": "bin/sync_svg.sh",
