@@ -7,18 +7,18 @@
   },
   "description": "A React Native compatible package for Akar Icons",
   "source": "./src/index.tsx",
-  "main": "./lib/commonjs/index.js",
-  "module": "./lib/module/index.js",
-  "types": "./lib/typescript/src/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": {
-        "types": "./lib/typescript/src/index.d.ts",
-        "default": "./lib/module/index.js"
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
       },
       "require": {
-        "types": "./lib/typescript/src/index.d.ts",
-        "default": "./lib/commonjs/index.js"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
       }
     }
   },
@@ -45,8 +45,8 @@
     "icons:build": "node bin/build.cjs",
     "format:local": "bunx biome check --write",
     "format:ci": "bunx biome check",
-    "clean": "del-cli lib",
-    "prepare": "bun clean && bunx tsc --project tsconfig.build.json && bun run bin/build-package.cjs && bun format:local",
+    "clean": "del-cli dist",
+    "prepare": "bun clean && bunx tsup",
     "release": "release-it"
   },
   "keywords": ["svg", "akar", "icons", "react-native", "ios", "android"],
@@ -71,7 +71,6 @@
     "@types/eslint-config-prettier": "^6.11.3",
     "@types/jest": "^29.5.14",
     "@types/react": "^18.3.18",
-    "bun": "^1.2.5",
     "change-case": "^5.4.4",
     "cheerio": "^1.0.0",
     "del-cli": "^5.1.0",
@@ -81,6 +80,7 @@
     "react-native-svg": "^15.11.2",
     "release-it": "^17.11.0",
     "svgo": "^3.3.2",
+    "tsup": "^8.4.0",
     "typescript": "^5.8.2"
   },
   "resolutions": {
