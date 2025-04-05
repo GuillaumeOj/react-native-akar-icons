@@ -1,9 +1,8 @@
-import { memo } from "react";
-import type { NamedExoticComponent, PropsWithRef } from "react";
+import React from "react";
 import { Path, Rect, Svg } from "react-native-svg";
 import type { IconProps } from "./IconProps";
 
-const IconComponent = (props: PropsWithRef<IconProps>) => {
+const PanelSplitColumn = React.memo((props: IconProps) => {
   const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
 
   return (
@@ -28,9 +27,7 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
       <Path stroke={color} d="M22 12H2" strokeWidth={strokeWidth} />
     </Svg>
   );
-};
+});
 
-IconComponent.displayName = "PanelSplitColumn";
-
-export const PanelSplitColumn: NamedExoticComponent<IconProps> =
-  memo<IconProps>(IconComponent);
+export { PanelSplitColumn };
+export default PanelSplitColumn;

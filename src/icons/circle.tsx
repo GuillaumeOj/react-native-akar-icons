@@ -1,9 +1,8 @@
-import { memo } from "react";
-import type { NamedExoticComponent, PropsWithRef } from "react";
+import React from "react";
 import { Svg, Circle as _Circle } from "react-native-svg";
 import type { IconProps } from "./IconProps";
 
-const IconComponent = (props: PropsWithRef<IconProps>) => {
+const Circle = React.memo((props: IconProps) => {
   const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
 
   return (
@@ -23,9 +22,7 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
       />
     </Svg>
   );
-};
+});
 
-IconComponent.displayName = "Circle";
-
-export const Circle: NamedExoticComponent<IconProps> =
-  memo<IconProps>(IconComponent);
+export { Circle };
+export default Circle;

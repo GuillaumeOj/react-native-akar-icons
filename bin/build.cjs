@@ -24,7 +24,6 @@ if (!fs.existsSync(SRC_ICONS_DIR)) {
 }
 
 const iconExports = [];
-const iconTypeExports = [];
 
 const buildIconsPropsType = async () => {
   const iconHelperTypePath = path.join(SRC_ICONS_DIR, "IconProps.ts");
@@ -154,7 +153,7 @@ const buildIcons = async () => {
       .replace(/px/g, "");
 
     const output = `import React, { memo } from "react";
-import type { NamedExoticComponent, PropsWithRef } from "react";
+import React from "react";
 import {
   Svg,
   Circle as _Circle,
@@ -176,21 +175,18 @@ import {
 } from "react-native-svg";
 import type { IconProps } from "./IconProps"
 
-const IconComponent = (props: PropsWithRef<IconProps>) => {
+const ${componentName} = React.memo((props: IconProps) => {
   const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
 
   return (${svgString});
-};
-
-IconComponent.displayName = "${componentName}";
+});
 
 
-export const ${componentName}: NamedExoticComponent<IconProps> = memo<IconProps>(IconComponent);`;
+export { ${componentName} };
+export default ${componentName}`;
 
-    const exportLine = `export { ${componentName} } from "./icons/${id}";`;
+    const exportLine = `export { default as ${componentName} } from "./icons/${id}";`;
     iconExports.push(exportLine);
-    const exportTypeLine = `export { ${componentName} } from "./icons/${componentName}";`;
-    iconTypeExports.push(exportTypeLine);
 
     fs.writeFileSync(outputLocation, output, { encoding: "utf-8" });
   }

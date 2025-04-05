@@ -1,9 +1,8 @@
-import { memo } from "react";
-import type { NamedExoticComponent, PropsWithRef } from "react";
+import React from "react";
 import { Path, Svg } from "react-native-svg";
 import type { IconProps } from "./IconProps";
 
-const IconComponent = (props: PropsWithRef<IconProps>) => {
+const HomeAlt1 = React.memo((props: IconProps) => {
   const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
 
   return (
@@ -30,9 +29,7 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
       />
     </Svg>
   );
-};
+});
 
-IconComponent.displayName = "HomeAlt1";
-
-export const HomeAlt1: NamedExoticComponent<IconProps> =
-  memo<IconProps>(IconComponent);
+export { HomeAlt1 };
+export default HomeAlt1;

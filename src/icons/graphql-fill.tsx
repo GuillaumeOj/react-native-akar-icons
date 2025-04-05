@@ -1,9 +1,8 @@
-import { memo } from "react";
-import type { NamedExoticComponent, PropsWithRef } from "react";
+import React from "react";
 import { ClipPath, Defs, G, Path, Svg } from "react-native-svg";
 import type { IconProps } from "./IconProps";
 
-const IconComponent = (props: PropsWithRef<IconProps>) => {
+const GraphqlFill = React.memo((props: IconProps) => {
   const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
 
   return (
@@ -29,9 +28,7 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
       </Defs>
     </Svg>
   );
-};
+});
 
-IconComponent.displayName = "GraphqlFill";
-
-export const GraphqlFill: NamedExoticComponent<IconProps> =
-  memo<IconProps>(IconComponent);
+export { GraphqlFill };
+export default GraphqlFill;

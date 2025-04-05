@@ -1,9 +1,8 @@
-import { memo } from "react";
-import type { NamedExoticComponent, PropsWithRef } from "react";
+import React from "react";
 import { ClipPath, Defs, G, Path, Svg } from "react-native-svg";
 import type { IconProps } from "./IconProps";
 
-const IconComponent = (props: PropsWithRef<IconProps>) => {
+const JqueryFill = React.memo((props: IconProps) => {
   const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
 
   return (
@@ -26,9 +25,7 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
       </Defs>
     </Svg>
   );
-};
+});
 
-IconComponent.displayName = "JqueryFill";
-
-export const JqueryFill: NamedExoticComponent<IconProps> =
-  memo<IconProps>(IconComponent);
+export { JqueryFill };
+export default JqueryFill;
