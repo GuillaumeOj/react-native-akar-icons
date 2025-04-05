@@ -1,9 +1,8 @@
-import { memo } from "react";
-import type { NamedExoticComponent, PropsWithRef } from "react";
+import React from "react";
 import { Path, Rect, Svg } from "react-native-svg";
 import type { IconProps } from "./IconProps";
 
-const IconComponent = (props: PropsWithRef<IconProps>) => {
+const SidebarLeft = React.memo((props: IconProps) => {
   const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
 
   return (
@@ -28,9 +27,7 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
       <Path stroke={color} d="M9 3v18" strokeWidth={strokeWidth} />
     </Svg>
   );
-};
+});
 
-IconComponent.displayName = "SidebarLeft";
-
-export const SidebarLeft: NamedExoticComponent<IconProps> =
-  memo<IconProps>(IconComponent);
+export { SidebarLeft };
+export default SidebarLeft;

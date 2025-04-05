@@ -1,9 +1,8 @@
-import { memo } from "react";
-import type { NamedExoticComponent, PropsWithRef } from "react";
+import React from "react";
 import { Path, Svg } from "react-native-svg";
 import type { IconProps } from "./IconProps";
 
-const IconComponent = (props: PropsWithRef<IconProps>) => {
+const VercelFill = React.memo((props: IconProps) => {
   const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
 
   return (
@@ -17,9 +16,7 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
       <Path fill={color} d="m12 1 12 21H0z" />
     </Svg>
   );
-};
+});
 
-IconComponent.displayName = "VercelFill";
-
-export const VercelFill: NamedExoticComponent<IconProps> =
-  memo<IconProps>(IconComponent);
+export { VercelFill };
+export default VercelFill;

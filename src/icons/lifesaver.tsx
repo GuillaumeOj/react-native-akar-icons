@@ -1,5 +1,4 @@
-import { memo } from "react";
-import type { NamedExoticComponent, PropsWithRef } from "react";
+import React from "react";
 import {
   ClipPath,
   Defs,
@@ -10,7 +9,7 @@ import {
 } from "react-native-svg";
 import type { IconProps } from "./IconProps";
 
-const IconComponent = (props: PropsWithRef<IconProps>) => {
+const Lifesaver = React.memo((props: IconProps) => {
   const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
 
   return (
@@ -50,9 +49,7 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
       </Defs>
     </Svg>
   );
-};
+});
 
-IconComponent.displayName = "Lifesaver";
-
-export const Lifesaver: NamedExoticComponent<IconProps> =
-  memo<IconProps>(IconComponent);
+export { Lifesaver };
+export default Lifesaver;

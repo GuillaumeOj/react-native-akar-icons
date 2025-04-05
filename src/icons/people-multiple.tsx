@@ -1,9 +1,8 @@
-import { memo } from "react";
-import type { NamedExoticComponent, PropsWithRef } from "react";
+import React from "react";
 import { Path, Svg, Circle as _Circle } from "react-native-svg";
 import type { IconProps } from "./IconProps";
 
-const IconComponent = (props: PropsWithRef<IconProps>) => {
+const PeopleMultiple = React.memo((props: IconProps) => {
   const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
 
   return (
@@ -25,9 +24,7 @@ const IconComponent = (props: PropsWithRef<IconProps>) => {
       <_Circle cx="17" cy="6" r="3" stroke={color} strokeWidth={strokeWidth} />
     </Svg>
   );
-};
+});
 
-IconComponent.displayName = "PeopleMultiple";
-
-export const PeopleMultiple: NamedExoticComponent<IconProps> =
-  memo<IconProps>(IconComponent);
+export { PeopleMultiple };
+export default PeopleMultiple;
