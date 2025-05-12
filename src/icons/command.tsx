@@ -1,26 +1,20 @@
 import React from "react";
 import { Path, Svg } from "react-native-svg";
-import type { IconProps } from "./IconProps";
+import type { IconProps, IconType } from "../types/icons";
 
-const Command = React.memo((props: IconProps) => {
-  const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
-
-  return (
-    <Svg
-      width={size}
-      height={size}
-      fill="none"
-      viewBox="0 0 24 24"
-      {...otherProps}
-    >
-      <Path
-        stroke={color}
-        d="M9.3 17.85a3.15 3.15 0 1 1-3.15-3.15h11.7a3.15 3.15 0 1 1-3.15 3.15V6.15a3.15 3.15 0 1 1 3.15 3.15H6.15A3.15 3.15 0 1 1 9.3 6.15z"
-        strokeWidth={strokeWidth}
-      />
-    </Svg>
-  );
-});
+const Command: IconType = React.memo(
+  ({ color = "black", size = 24, strokeWidth = 2, ...rest }: IconProps) => {
+    return (
+      <Svg width={size} height={size} fill="none" viewBox="0 0 24 24" {...rest}>
+        <Path
+          stroke={color}
+          d="M9.3 17.85a3.15 3.15 0 1 1-3.15-3.15h11.7a3.15 3.15 0 1 1-3.15 3.15V6.15a3.15 3.15 0 1 1 3.15 3.15H6.15A3.15 3.15 0 1 1 9.3 6.15z"
+          strokeWidth={strokeWidth}
+        />
+      </Svg>
+    );
+  },
+);
 
 export { Command };
 export default Command;

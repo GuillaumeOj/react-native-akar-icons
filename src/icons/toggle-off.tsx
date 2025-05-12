@@ -1,41 +1,35 @@
 import React from "react";
 import { Rect, Svg, Circle as _Circle } from "react-native-svg";
-import type { IconProps } from "./IconProps";
+import type { IconProps, IconType } from "../types/icons";
 
-const ToggleOff = React.memo((props: IconProps) => {
-  const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
-
-  return (
-    <Svg
-      width={size}
-      height={size}
-      fill="none"
-      viewBox="0 0 24 24"
-      {...otherProps}
-    >
-      <Rect
-        width="20"
-        height="10"
-        x="2"
-        y="7"
-        stroke={color}
-        rx="5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={strokeWidth}
-      />
-      <_Circle
-        cx="7"
-        cy="12"
-        r="5"
-        stroke={color}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={strokeWidth}
-      />
-    </Svg>
-  );
-});
+const ToggleOff: IconType = React.memo(
+  ({ color = "black", size = 24, strokeWidth = 2, ...rest }: IconProps) => {
+    return (
+      <Svg width={size} height={size} fill="none" viewBox="0 0 24 24" {...rest}>
+        <Rect
+          width="20"
+          height="10"
+          x="2"
+          y="7"
+          stroke={color}
+          rx="5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={strokeWidth}
+        />
+        <_Circle
+          cx="7"
+          cy="12"
+          r="5"
+          stroke={color}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={strokeWidth}
+        />
+      </Svg>
+    );
+  },
+);
 
 export { ToggleOff };
 export default ToggleOff;
