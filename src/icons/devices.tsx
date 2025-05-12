@@ -1,8 +1,8 @@
-import React from "react";
+import { memo } from "react";
 import { Path, Svg } from "react-native-svg";
 import type { IconProps, IconType } from "../types/icons";
 
-const Devices: IconType = React.memo(
+const Devices: IconType = memo(
   ({ color = "black", size = 24, strokeWidth = 2, ...rest }: IconProps) => {
     return (
       <Svg width={size} height={size} fill="none" viewBox="0 0 24 24" {...rest}>
