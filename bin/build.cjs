@@ -157,7 +157,7 @@ const buildIcons = async () => {
       .replace(/px/g, "");
 
     const output = `import React, { memo } from "react";
-import React from "react";
+import { memo } from "react";
 import {
   Svg,
   Circle as _Circle,
@@ -179,7 +179,7 @@ import {
 } from "react-native-svg";
 import type { IconProps, IconType } from "../types/icons"
 
-const ${componentName}: IconType = React.memo(({ color = "black", size = 24, strokeWidth = 2, ...rest }: IconProps) => {
+const ${componentName}: IconType = memo(({ color = "black", size = 24, strokeWidth = 2, ...rest }: IconProps) => {
   return (${svgString});
 });
 
