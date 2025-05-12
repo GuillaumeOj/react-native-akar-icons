@@ -1,27 +1,21 @@
 import React from "react";
 import { Path, Svg } from "react-native-svg";
-import type { IconProps } from "./IconProps";
+import type { IconProps, IconType } from "../types/icons";
 
-const Search = React.memo((props: IconProps) => {
-  const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
-
-  return (
-    <Svg
-      width={size}
-      height={size}
-      fill="none"
-      viewBox="0 0 24 24"
-      {...otherProps}
-    >
-      <Path
-        stroke={color}
-        d="m21 21-4.486-4.494M19 10.5a8.5 8.5 0 1 1-17 0 8.5 8.5 0 0 1 17 0Z"
-        strokeLinecap="round"
-        strokeWidth={strokeWidth}
-      />
-    </Svg>
-  );
-});
+const Search: IconType = React.memo(
+  ({ color = "black", size = 24, strokeWidth = 2, ...rest }: IconProps) => {
+    return (
+      <Svg width={size} height={size} fill="none" viewBox="0 0 24 24" {...rest}>
+        <Path
+          stroke={color}
+          d="m21 21-4.486-4.494M19 10.5a8.5 8.5 0 1 1-17 0 8.5 8.5 0 0 1 17 0Z"
+          strokeLinecap="round"
+          strokeWidth={strokeWidth}
+        />
+      </Svg>
+    );
+  },
+);
 
 export { Search };
 export default Search;

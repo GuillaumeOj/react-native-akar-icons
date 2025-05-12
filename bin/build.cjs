@@ -9,29 +9,33 @@ const ROOT_DIR = path.join(__dirname, "..");
 const SRC_DIR = path.join(ROOT_DIR, "src");
 const ASSETS_DIR = path.join(ROOT_DIR, "assets");
 const TYPES_DIR = path.join(SRC_DIR, "types");
-const TYPES_ICONS_DIR = path.join(TYPES_DIR, "icons");
 const ASSETS_SVG_DIR = path.join(ASSETS_DIR, "svg");
-const SRC_ICONS_DIR = path.join(SRC_DIR, "icons");
+const ICONS_DIR = path.join(SRC_DIR, "icons");
 
 if (!fs.existsSync(TYPES_DIR)) {
   fs.mkdirSync(TYPES_DIR, () => {}, { recursive: true });
 }
-if (!fs.existsSync(TYPES_ICONS_DIR)) {
-  fs.mkdirSync(TYPES_ICONS_DIR, () => {}, { recursive: true });
-}
-if (!fs.existsSync(SRC_ICONS_DIR)) {
-  fs.mkdirSync(SRC_ICONS_DIR, () => {}, { recursive: true });
+if (!fs.existsSync(ICONS_DIR)) {
+  fs.mkdirSync(ICONS_DIR, () => {}, { recursive: true });
 }
 
-const iconExports = [];
+const iconExports = [
+  'export type { IconProps, IconType } from "./types/icons"',
+];
 
 const buildIconsPropsType = async () => {
-  const iconHelperTypePath = path.join(SRC_ICONS_DIR, "IconProps.ts");
-  const output = `export interface IconProps {
-  color?: string;
+  const iconHelperTypePath = path.join(TYPES_DIR, "icons.d.ts");
+  const output = `import type React from "react";
+import type { ColorValue } from "react-native";
+import type { SvgProps } from "react-native-svg";
+
+export interface IconProps extends SvgProps {
+  color?: ColorValue;
   size?: number;
   strokeWidth?: number;
-}`;
+}
+
+export type IconType = React.MemoExoticComponent<({ color, size, strokeWidth, ...rest }: IconProps) => React.JSX.Element>`;
   fs.writeFileSync(iconHelperTypePath, output, { encoding: "utf-8" });
 };
 
@@ -44,7 +48,7 @@ const buildIcons = async () => {
     const svg = fs.readFileSync(icon, { encoding: "utf-8" });
     const id = path.basename(icon, ".svg");
     const outputFileName = `${id}.tsx`;
-    const outputLocation = path.join(SRC_ICONS_DIR, outputFileName);
+    const outputLocation = path.join(ICONS_DIR, outputFileName);
     console.info(`> Processing ${id}...`);
 
     // Optimize SVG
@@ -99,7 +103,7 @@ const buildIcons = async () => {
             );
           }
         } else {
-          $(element).attr("otherProps", "...");
+          $(element).attr("rest", "...");
         }
       }
     });
@@ -115,7 +119,7 @@ const buildIcons = async () => {
       .replace(/xmlns=""/g, "")
       .replace(/width="24"/g, "width={size}")
       .replace(/height="24"/g, "height={size}")
-      .replace(/otherProps="..."/g, "{...otherProps}")
+      .replace(/rest="..."/g, "{...rest}")
       .replace(/<svg/g, "<Svg")
       .replace(/<\/svg>/g, "</Svg>")
       .replace(/<circle/g, "<_Circle")
@@ -173,11 +177,9 @@ import {
   Defs,
   Stop as _Stop
 } from "react-native-svg";
-import type { IconProps } from "./IconProps"
+import type { IconProps, IconType } from "../types/icons"
 
-const ${componentName} = React.memo((props: IconProps) => {
-  const { color = "black", size = 24, strokeWidth = 2, ...otherProps } = props;
-
+const ${componentName}: IconType = React.memo(({ color = "black", size = 24, strokeWidth = 2, ...rest }: IconProps) => {
   return (${svgString});
 });
 

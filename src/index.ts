@@ -1,3 +1,4 @@
+export type { IconProps, IconType } from "./types/icons";
 export { default as ZoomOut } from "./icons/zoom-out";
 export { default as ZoomIn } from "./icons/zoom-in";
 export { default as ZoomFill } from "./icons/zoom-fill";
