@@ -48,9 +48,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@react-native/eslint-config": "^0.73.2",
     "@types/bun": "^1.2.5",
-    "@types/eslint-config-prettier": "^6.11.3",
     "@types/jest": "^29.5.14",
     "@types/react": "^18.3.18",
     "change-case": "^5.4.4",
