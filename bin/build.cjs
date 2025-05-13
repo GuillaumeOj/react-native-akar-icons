@@ -12,12 +12,11 @@ const TYPES_DIR = path.join(SRC_DIR, "types");
 const ASSETS_SVG_DIR = path.join(ASSETS_DIR, "svg");
 const ICONS_DIR = path.join(SRC_DIR, "icons");
 
-if (!fs.existsSync(TYPES_DIR)) {
-  fs.mkdirSync(TYPES_DIR, () => {}, { recursive: true });
-}
-if (!fs.existsSync(ICONS_DIR)) {
-  fs.mkdirSync(ICONS_DIR, () => {}, { recursive: true });
-}
+const createDir = (dir) => {
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, () => {}, { recursive: true });
+};
+
+for (const dir of [SRC_DIR, TYPES_DIR, ICONS_DIR]) createDir(dir);
 
 const iconExports = [
   'export type { IconProps, IconType } from "./types/icons"',
@@ -35,7 +34,7 @@ export interface IconProps extends SvgProps {
   strokeWidth?: number;
 }
 
-export type IconType = React.MemoExoticComponent<({ color, size, strokeWidth, ...rest }: IconProps) => React.JSX.Element>`;
+export type IconType = React.MemoExoticComponent<({ color, size, strokeWidth, ...rest }: IconProps) => React.JSX.Element>;`;
   fs.writeFileSync(iconHelperTypePath, output, { encoding: "utf-8" });
 };
 
@@ -156,8 +155,8 @@ const buildIcons = async () => {
       .replace(/<\/stop>/g, "</_Stop>")
       .replace(/px/g, "");
 
-    const output = `import React, { memo } from "react";
-import { memo } from "react";
+    const output = `import React from "react";
+import React from "react";
 import {
   Svg,
   Circle as _Circle,
@@ -177,9 +176,9 @@ import {
   Defs,
   Stop as _Stop
 } from "react-native-svg";
-import type { IconProps, IconType } from "../types/icons"
+import type { IconProps, IconType } from "../types/icons";
 
-const ${componentName}: IconType = memo(({ color = "black", size = 24, strokeWidth = 2, ...rest }: IconProps) => {
+const ${componentName}: IconType = React.memo(({ color = "black", size = 24, strokeWidth = 2, ...rest }: IconProps) => {
   return (${svgString});
 });
 
