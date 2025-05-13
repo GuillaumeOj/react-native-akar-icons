@@ -12,12 +12,11 @@ const TYPES_DIR = path.join(SRC_DIR, "types");
 const ASSETS_SVG_DIR = path.join(ASSETS_DIR, "svg");
 const ICONS_DIR = path.join(SRC_DIR, "icons");
 
-if (!fs.existsSync(TYPES_DIR)) {
-  fs.mkdirSync(TYPES_DIR, () => {}, { recursive: true });
-}
-if (!fs.existsSync(ICONS_DIR)) {
-  fs.mkdirSync(ICONS_DIR, () => {}, { recursive: true });
-}
+const createDir = (dir) => {
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, () => {}, { recursive: true });
+};
+
+for (const dir of [SRC_DIR, TYPES_DIR, ICONS_DIR]) createDir(dir);
 
 const iconExports = [
   'export type { IconProps, IconType } from "./types/icons"',
