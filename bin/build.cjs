@@ -34,7 +34,7 @@ export interface IconProps extends SvgProps {
   strokeWidth?: number;
 }
 
-export type IconType = React.MemoExoticComponent<({ color, size, strokeWidth, ...rest }: IconProps) => React.JSX.Element>`;
+export type IconType = React.MemoExoticComponent<({ color, size, strokeWidth, ...rest }: IconProps) => React.JSX.Element>;`;
   fs.writeFileSync(iconHelperTypePath, output, { encoding: "utf-8" });
 };
 
@@ -155,7 +155,7 @@ const buildIcons = async () => {
       .replace(/<\/stop>/g, "</_Stop>")
       .replace(/px/g, "");
 
-    const output = `import React, { memo } from "react";
+    const output = `import React from "react";
 import React from "react";
 import {
   Svg,
@@ -176,7 +176,7 @@ import {
   Defs,
   Stop as _Stop
 } from "react-native-svg";
-import type { IconProps, IconType } from "../types/icons"
+import type { IconProps, IconType } from "../types/icons";
 
 const ${componentName}: IconType = React.memo(({ color = "black", size = 24, strokeWidth = 2, ...rest }: IconProps) => {
   return (${svgString});
