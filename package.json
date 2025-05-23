@@ -35,14 +35,14 @@
   "keywords": ["svg", "akar", "icons", "react-native", "ios", "android"],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Tasta-app/react-native-akar-icons.git"
+    "url": "git+https://github.com/GuillaumeOj/react-native-akar-icons.git"
   },
-  "author": "Guillaume <7831777+GuillaumeOj@users.noreply.github.com> (https://github.com/Tasta-app)",
+  "author": "Guillaume <7831777+GuillaumeOj@users.noreply.github.com> (https://github.com/GuillaumeOj)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Tasta-app/react-native-akar-icons/issues"
+    "url": "https://github.com/GuillaumeOj/react-native-akar-icons/issues"
   },
-  "homepage": "https://github.com/Tasta-app/react-native-akar-icons#readme",
+  "homepage": "https://github.com/GuillaumeOj/react-native-akar-icons#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

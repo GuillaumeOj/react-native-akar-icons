@@ -74,7 +74,7 @@ Explore all the icons at [akaricons.com](https://akaricons.com).
 
 ## Author
 
-GuillaumeOj for Tasta-app ([Tasta-app](https://github.com/Tasta-app))
+GuillaumeOj ([@GuilllaumeOj](https://github.com/GuillaumeOj))
 
 ## Contributors
 
